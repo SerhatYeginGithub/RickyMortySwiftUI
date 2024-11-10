@@ -52,6 +52,17 @@
                ReferencedContainer = "container:RickyMortySwiftUI.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "735C151E2CE0E5FC0011CF3A"
+               BuildableName = "RickyMortySwiftUI_UITests.xctest"
+               BlueprintName = "RickyMortySwiftUI_UITests"
+               ReferencedContainer = "container:RickyMortySwiftUI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

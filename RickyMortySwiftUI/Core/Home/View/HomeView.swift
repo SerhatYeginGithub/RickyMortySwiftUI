@@ -22,7 +22,9 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: vm.columns) {
                     ForEach(vm.characterFilter == .all ? vm.characters : vm.filteredCharacters) { character in
-                        NavigationLink(destination: Text("Detail...")) {
+                        NavigationLink(destination: Text("Detail...")
+                            .navigationTitle(character.name)
+                        ) {
                             
                             CharacterItemView(image: character.image, name: character.name)
                                 .padding(.bottom)
@@ -44,8 +46,8 @@ struct HomeView: View {
             })
             .navigationTitle("Characters")
             .searchable(text: $vm.searchText, prompt: "Search a character...")
-            .onChange(of: vm.searchText) { newValue in
-             
+            .onChange(of: vm.searchText) { _ in
+                vm.searchCharacter()
             }
         }
     }
