@@ -28,6 +28,8 @@ final class HomeViewModel: HomeViewModelProtocol, ObservableObject {
         self.service = service
         Task { await fetchCharacters(endpoint: .characters(page: page)) }
     }
+    
+    
     @MainActor
     func fetchCharacters(endpoint: NetworkEndpoint) async {
         viewState = .fetching
@@ -48,8 +50,15 @@ final class HomeViewModel: HomeViewModelProtocol, ObservableObject {
     }
     
     func searchCharacter() {
-        self.characterFilter = .search
-        self.filteredCharacters = characters.filter({$0.name.lowercased().trimmingCharacters(in: .whitespaces).contains(searchText.lowercased().trimmingCharacters(in: .whitespaces))})
+        if !searchText.isEmpty,
+           searchText.count >= 3 {
+            self.characterFilter = .search
+            self.filteredCharacters = characters.filter({$0.name.lowercased().trimmingCharacters(in: .whitespaces).contains(searchText.lowercased().trimmingCharacters(in: .whitespaces))})
+        } else {
+            self.characterFilter = .all
+            self.filteredCharacters = []
+        }
+    
     }
     
 }

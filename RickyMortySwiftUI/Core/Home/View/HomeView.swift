@@ -45,12 +45,7 @@ struct HomeView: View {
             .navigationTitle("Characters")
             .searchable(text: $vm.searchText, prompt: "Search a character...")
             .onChange(of: vm.searchText) { newValue in
-                if !newValue.isEmpty,
-                   newValue.count >= 3 {
-                    vm.searchCharacter()
-                } else {
-                    vm.characterFilter = .all
-                }
+             
             }
         }
     }
